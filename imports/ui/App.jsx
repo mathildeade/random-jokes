@@ -1,11 +1,25 @@
 import React from 'react';
-import { Hello } from './Hello.jsx';
-import { Info } from './Info.jsx';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export const App = () => (
-  <div>
-    <h1>Welcome to Meteor!</h1>
-    <Hello/>
-    <Info/>
-  </div>
-);
+import Home   from '/imports/ui/pages/Home';
+import Signin from '/imports/ui/pages/Signin';
+import Signup from '/imports/ui/pages/Signup';
+
+
+const App = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/"   component={Home} />
+        <Route path="/signin" component={Signin} />
+        <Route path="/signup" component={Signup} />
+  
+      </Switch>
+      <ToastContainer/>
+    </Router>
+  );
+}
+
+export default App; 
